@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-100 ">
+    <div id="app">
+        <div class="flex justify-center">
+            <div class="w-150 h-90 bg-gray-100 rounded shadow-lg border border-gray-200 mt-10">
+                <div class="flex justify-center p-5">
+                    <div>
+                        <h1 class="font-semibold text-2xl text-gray-600 text-center mb-5">Fill up form</h1>
+                        <div class="flex flex-col gap-5 w-80">
+                            <input v-model="name" type="text" name="name" id="name" placeholder="Enter your name"
+                                class="p-2 text-2xl border-2 border-gray-400 rounded font-semibold w-80">
+                            <input v-model="email" type="text" name="name" id="name" placeholder="Enter your email"
+                                class="p-2 text-2xl border-2 border-gray-400 rounded font-semibold w-80">
+                            <input v-model="address" type="text" name="name" id="name" placeholder="Enter your address"
+                                class="p-2 text-2xl border-2 border-gray-400 rounded font-semibold w-80">
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-35">
+                    <button type="button" @click="submitForm"
+                        class="font-semibold border text-gray-800 rounded bg-green-300 px-5 py-2 text-xl cursor-pointer hover:text-white duration-300 ease-in-out">Submit</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="flex justify-center mt-10">
+            <div class="w-90 h-50 bg-gray-100 border border-gray-200 shadow-lg p-5">
+                <p class="text-xl text-gray-600 font-semibold mb-5">name: <span class="font-normal italic">{{receivedName}}</span></p>
+                <p class="text-xl text-gray-600 font-semibold mb-5">email: <span class="font-normal italic">{{receivedEmail}}</span></p>
+                <p class="text-xl text-gray-600 font-semibold">address: <span class="font-normal italic">{{receivedAddress}}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    name: '',
+                    email: '',
+                    address: '',
+                    
+                    receivedName: '',
+                    receivedEmail: '',
+                    receivedAddress: '',
+                }
+            },
+            methods:{
+                submitForm(){
+                    this.receivedName = this.name;
+                    this.receivedEmail = this.email;
+                    this.receivedAddress = this.address;
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
